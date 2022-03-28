@@ -22,11 +22,45 @@ header h1 {
     color: crimson;
 }
 
-main {
-    margin: 1em 0;
-    padding: 2em;
+header nav ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+header nav li {
+    list-style: none;
+    display: inline-block;
+}
+
+header nav a {
+    width: 6em;
+}
+
+header nav ul, main {
     background: white;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.20);
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 10px 12px;
+    color: #737373;
+}
+
+nav .active {
+    color: crimson;
+}
+
+nav a:hover {
+    background-color: crimson;
+    color: white;
+}
+
+main {
+    margin: -1.5em 0 1em;
+    padding: 3em 2em 2em;
 }
 
 main > :last-child {
@@ -57,8 +91,94 @@ a:not(:hover) {
     text-decoration: none;
 }
 
+td {
+    padding-right: 1em;
+}
+
 footer {
     font-size: 80%;
     color: #737373;
     margin-bottom: 2em;
+}
+
+.info {
+    background: whitesmoke;
+    color: #737373;
+}
+
+.error {
+    background: #fff2f7;
+    color: crimson;
+}
+
+.info, .error {
+    padding: 1em 1.1em 1.1em;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr > * {
+    padding: 0.4em 0.8em;
+}
+
+tr:not(:last-child) > * {
+    border-bottom: whitesmoke 2px solid;
+}
+
+tr > :last-child {
+    padding-right: 0;
+}
+
+tr > :first-child {
+    padding-left: 0;
+}
+
+th {
+    text-align: left;
+    vertical-align: top;
+}
+
+table ul {
+    margin: 0;
+    padding: 0;
+}
+
+table li {
+    list-style: none;
+}
+
+
+/* layout of contacts pages */
+
+#contacts {
+    display: flex;
+}
+
+#contacts nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#contacts nav li {
+    list-style: none;
+}
+
+#contacts nav li:not(:last-child) {
+    border-bottom: whitesmoke 2px solid;
+}
+
+#contacts nav a {
+    display: block;
+    padding: 0.4em 0.8em;
+}
+
+#contacts > :last-child {
+    margin-left: 2em;
+    flex-grow: 1;
+}
+
+#contacts table {
+    width: 100%;
 }

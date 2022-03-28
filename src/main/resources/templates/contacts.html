@@ -1,20 +1,31 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
-    <title>Contacts</title>
-</head>
-<div id="container">
-    <header>
-        <h1>Contact List</h1>
-    </header>
-    <main>
-        <h1>Contacts</h1>
-        <p><em>TODO</em></p>
-    </main>
-    <footer>
-        built with <a href="https://spring.io/">Spring</a>
-    </footer>
-</div>
+<!DOCTYPE html>
+<html lang="en" th:replace="fragments/page::html(~{::title},~{::main})">
+<title>Contact List – Contacts</title>
+<main id="contacts">
+    <nav>
+        <ul>
+            <li th:each="entry : ${contactList}">
+                <a th:href="@{/contacts/{id}(id=${entry.id})}"
+                   th:class="${contact?.id == entry.id ? 'active' : ''}"
+                   th:text="${entry.name}">First Last</a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        <div class="info" th:if="${contact == null && #response.status != 404}">
+            Select a contact on the left
+        </div>
+        <div class="error" th:if="${contact == null && #response.status == 404}">
+            <strong>404</strong> – Contact not found
+        </div>
+        <table th:if="${contact != null}">
+            <tr th:replace="fragments/contacts::row('First name',${contact.firstName})"></tr>
+            <tr th:replace="fragments/contacts::row('Last name',${contact.lastName})"></tr>
+            <tr th:replace="fragments/contacts::listRow('Email addresses',${contact.email})"></tr>
+            <tr th:replace="fragments/contacts::listRow('Phone numbers',${contact.phone})"></tr>
+            <tr th:replace="fragments/contacts::row('Job title',${contact.jobTitle})"></tr>
+            <tr th:replace="fragments/contacts::row('Company',${contact.company})"></tr>
+        </table>
+    </div>
+</main>
 </html>

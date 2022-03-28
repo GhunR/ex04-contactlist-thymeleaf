@@ -40,4 +40,17 @@ public class ContactService {
     public Optional<Contact> findContact(int id) {
         return Optional.ofNullable(contacts.get(id));
     }
+
+    public int phoneNumberCount() {
+        return contacts.values().stream()
+            .mapToInt(c -> c.getPhone().size())
+            .sum();
+    }
+
+    public int emailCount() {
+        return contacts.values().stream()
+            .mapToInt(c -> c.getEmail().size())
+            .sum();
+    }
+
 }
